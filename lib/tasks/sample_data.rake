@@ -10,8 +10,13 @@ namespace :db do
       email = "example-#{n+1}@railstutorial.org"
       password  = "password"
       User.create!(name: name,
-                   email: email,
-                   password: password)
+                  email: email,
+                  password: password)
+    end
+    user = User.all(limit: 6)
+    50.times do
+      content = Faker::Lorem.sentence(5)
+      user.each { |user| user.microposts.create!(content: content)}
     end
   end
 end
