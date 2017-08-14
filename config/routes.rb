@@ -1,4 +1,5 @@
 SampleApp::Application.routes.draw do
+  get "contacts/new"
   devise_for :users, :controllers => {
     :registrations => "registrations"
   }
@@ -11,6 +12,7 @@ SampleApp::Application.routes.draw do
   
   resources :microposts,    only: [:create, :destroy]
   resources :relationships, only: [:create, :destroy]
+  resources :contacts, only: [:new, :create]
   root  'static_pages#home'
   match '/help', to: 'static_pages#help', via: 'get'
   match '/about', to: 'static_pages#about', via: 'get'
